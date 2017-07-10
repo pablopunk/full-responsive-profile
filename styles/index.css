@@ -1,0 +1,203 @@
+html, body, h1, h2, h3, div {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'Hind Siliguri', Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.toggle-navigation {
+  display: none;
+  color: white;
+  height: 58px;
+  line-height: 58px;
+  cursor: pointer;
+  padding-left: 1em;
+  padding-top: .3em;
+}
+
+.toggle-navigation.open {
+  background-color: #111;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 58px;
+  transition: background-color .3s cubic-bezier(1, 0.01, 0.25, 1);
+  animation: navbarAnimation 1s cubic-bezier(1, 0.01, 0.25, 1);
+}
+
+.navbar > ul {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+}
+
+.navbar > ul {
+  margin: 0;
+}
+
+.navbar > ul > li > a {
+  padding: 1em;
+  line-height: 50px;
+  color: white;
+  transition: background-color .3s, color .3s;
+}
+
+.navbar > ul > li > a:hover {
+  background-color: #448AFF;
+}
+
+.header-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../images/header-blur.jpeg);
+  height: 100vh;
+  animation: headerImageAnimation 1s cubic-bezier(1, 0.01, 0.25, 1) forwards;
+}
+
+.header-title {
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  color: #448AFF;
+  opacity: .9;
+  text-align: center;
+  width: 100%;
+  font-family: Pacifico;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, .3);
+  animation: titleAnimation 1s cubic-bezier(1, 0.01, 0.25, 1) forwards;
+}
+
+section {
+  padding-left: calc(100vw - 90%);
+  padding-right: calc(100vw - 90%);
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+section a {
+  color: #455A64;
+}
+
+section:nth-child(even) {
+  background-color: rgba(0, 0, 0, .8);
+  color: white;
+}
+
+section:nth-child(odd) {
+  background-color: whitesmoke;
+}
+
+.section-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-content > * {
+  margin: 1em 2em 1em 2em;
+}
+
+#quien-soy img {
+  width: 250px;
+  height: 250px;
+}
+
+#estudios ul, #experiencia ul {
+  list-style-type: square;
+  font-size: 1.5em;
+}
+
+#estudios li:nth-child(odd), #sobre-mi li:nth-child(odd) {
+  color: #ccf5ff;
+}
+
+#estudios li:nth-child(even), #sobre-mi li:nth-child(even) {
+  color: white;
+}
+
+.education-date, .experiencia-date {
+  float: right;
+}
+
+.experiencia-location {
+  color: #448AFF;
+}
+
+.experiencia-location, .experiencia-date {
+  font-size: .8em;
+}
+
+#sobre-mi .info ul {
+  font-size: 1.2em;
+}
+
+@media only screen and (max-width : 768px) {
+  .navbar ul {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    background-color: #111;
+  }
+  .navbar ul li {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .toggle-navigation {
+    display: block;
+  }
+  .section-content {
+    flex-direction: column;
+  }
+  .experiencia-date, .education-date {
+    display: none;
+  }
+  section * {
+    display: block;
+  }
+  .section-content > * {
+    margin: 1em 0 1em 0;
+  }
+}
+
+@keyframes navbarAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes titleAnimation {
+  0% {
+    font-size: 0px;
+  }
+  100% {
+    font-size: 80px;
+  }
+}
+
+@keyframes headerImageAnimation {
+  0% {
+    background-image: url(../images/header.jpeg);
+  }
+  100% {
+    background-image: url(../images/header-blur.jpeg);
+  }
+}
