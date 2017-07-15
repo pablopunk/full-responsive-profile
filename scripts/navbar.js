@@ -2,50 +2,71 @@
 
 /* global $ */
 
-var getNavbarHeight = function getNavbarHeight() {
-  return $('.navbar').height();
-};
+var navbarHeight = $('.navbar').height();
+var headerTitleOffsetTop = $('.header-title').offset().top;
 
 var getQuienSoyOffset = function getQuienSoyOffset() {
   return $('#quien-soy').offset().top;
 };
-
 var isNavbarInMain = function isNavbarInMain() {
-  return window.pageYOffset >= getQuienSoyOffset() - getNavbarHeight();
+  return window.pageYOffset >= getQuienSoyOffset() - navbarHeight;
 };
-
 var shouldNavbarTurnBlack = function shouldNavbarTurnBlack() {
   return isNavbarInMain();
 };
-
 var turnNavBarBlack = function turnNavBarBlack() {
   return $('.navbar').css('background-color', 'rgba(0, 0, 0, .8)');
 };
-
 var turnNavBarWhite = function turnNavBarWhite() {
   return $('.navbar').css('background-color', 'transparent');
 };
-
+var didHeaderTitleTouchNavbar = function didHeaderTitleTouchNavbar() {
+  return headerTitleOffsetTop < $(window).scrollTop();
+};
+var moveHeaderTitleToNavbar = function moveHeaderTitleToNavbar() {
+  return $('.header-title').addClass('title-in-navbar');
+};
+var hideHeaderTitleFromNavbar = function hideHeaderTitleFromNavbar() {
+  return $('.header-title').removeClass('title-in-navbar');
+};
 var releaseLock = function releaseLock() {
-  setTimeout(function () {
-    scrollLock = false;
-    handleScrollEvent();
+  return setTimeout(function () {
+    checkScrollForNavbarLock = false;handleScrollEvent();
   }, 2000);
 };
+var isToggleNavVisible = function isToggleNavVisible() {
+  return $('.toggle-navigation').css('display') !== 'none';
+};
+var handleToggleNavigationClick = function handleToggleNavigationClick(event) {
+  return toggleNavbar();
+};
+var isNavBarOpen = function isNavBarOpen() {
+  return $('.navbar ul').css('visibility') === 'visible';
+};
 
-var scrollLock = false;
+var handleTitleInNavbar = function handleTitleInNavbar() {
+  if (didHeaderTitleTouchNavbar()) {
+    moveHeaderTitleToNavbar();
+  } else {
+    hideHeaderTitleFromNavbar();
+  }
+};
+
+var checkScrollForNavbarLock = false;
 var navbarIsBlack = false;
 var handleScrollEvent = function handleScrollEvent() {
-  if (scrollLock) return;
+  handleTitleInNavbar();
+
+  if (checkScrollForNavbarLock) return;
   var shouldTurnBlack = shouldNavbarTurnBlack();
   if (!navbarIsBlack && shouldTurnBlack) {
     turnNavBarBlack();
     navbarIsBlack = true;
-    scrollLock = true;
+    checkScrollForNavbarLock = true;
   } else if (navbarIsBlack && !shouldTurnBlack) {
     turnNavBarWhite();
     navbarIsBlack = false;
-    scrollLock = true;
+    checkScrollForNavbarLock = true;
   }
   releaseLock();
 };
@@ -66,10 +87,6 @@ var animateSectionTitle = function animateSectionTitle(section) {
   }, 1000);
 };
 
-var isToggleNavVisible = function isToggleNavVisible() {
-  return $('.toggle-navigation').css('display') !== 'none';
-};
-
 var hideNavbar = function hideNavbar() {
   $('.navbar ul').css('visibility', 'hidden');
   $('.toggle-navigation').removeClass('open');
@@ -86,10 +103,6 @@ var hideNavbarIfToggleIsVisible = function hideNavbarIfToggleIsVisible() {
   }
 };
 
-var isNavBarOpen = function isNavBarOpen() {
-  return $('.navbar ul').css('visibility') === 'visible';
-};
-
 var toggleNavbar = function toggleNavbar() {
   if (isNavBarOpen()) {
     hideNavbar();
@@ -102,7 +115,7 @@ var handleSectionClick = function handleSectionClick(event) {
   event.preventDefault();
   var sectionToGo = event.target.href.split('#').pop();
   if (sectionToGo) {
-    scrollPage($('#' + sectionToGo).offset().top - getNavbarHeight());
+    scrollPage($('#' + sectionToGo).offset().top - navbarHeight);
     animateSectionTitle(sectionToGo);
   } else {
     scrollPage(0);
@@ -119,11 +132,8 @@ var handleWindowResize = function handleWindowResize(event) {
   }
 };
 
-var handleToggleNavigationClick = function handleToggleNavigationClick(event) {
-  return toggleNavbar();
-};
-
 $(document).scroll(handleScrollEvent);
 $(window).resize(handleWindowResize);
 $('.navbar a').click(handleSectionClick);
 $('.toggle-navigation').click(handleToggleNavigationClick);
+$('.title-in-navbar').click(handleToggleNavigationClick);

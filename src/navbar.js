@@ -1,37 +1,44 @@
 /* global $ */
 
-const getNavbarHeight = () => $('.navbar').height()
+const navbarHeight = $('.navbar').height()
+const headerTitleOffsetTop = $('.header-title').offset().top
 
 const getQuienSoyOffset = () => $('#quien-soy').offset().top
-
-const isNavbarInMain = () => (window.pageYOffset >= (getQuienSoyOffset() - getNavbarHeight()))
-
+const isNavbarInMain = () => (window.pageYOffset >= (getQuienSoyOffset() - navbarHeight))
 const shouldNavbarTurnBlack = () => isNavbarInMain()
-
 const turnNavBarBlack = () => $('.navbar').css('background-color', 'rgba(0, 0, 0, .8)')
-
 const turnNavBarWhite = () => $('.navbar').css('background-color', 'transparent')
+const didHeaderTitleTouchNavbar = () => (headerTitleOffsetTop < $(window).scrollTop())
+const moveHeaderTitleToNavbar = () => $('.header-title').addClass('title-in-navbar')
+const hideHeaderTitleFromNavbar = () => $('.header-title').removeClass('title-in-navbar')
+const releaseLock = () => setTimeout(() => { checkScrollForNavbarLock = false; handleScrollEvent() }, 2000)
+const isToggleNavVisible = () => ($('.toggle-navigation').css('display') !== 'none')
+const handleToggleNavigationClick = event => toggleNavbar()
+const isNavBarOpen = () => ($('.navbar ul').css('visibility') === 'visible')
 
-const releaseLock = () => {
-  setTimeout(() => {
-    scrollLock = false
-    handleScrollEvent()
-  }, 2000)
+const handleTitleInNavbar = () => {
+  if (didHeaderTitleTouchNavbar()) {
+    moveHeaderTitleToNavbar()
+  } else {
+    hideHeaderTitleFromNavbar()
+  }
 }
 
-let scrollLock = false
+let checkScrollForNavbarLock = false
 let navbarIsBlack = false
 const handleScrollEvent = () => {
-  if (scrollLock) return
+  handleTitleInNavbar()
+
+  if (checkScrollForNavbarLock) return
   const shouldTurnBlack = shouldNavbarTurnBlack()
   if (!navbarIsBlack && shouldTurnBlack) {
     turnNavBarBlack()
     navbarIsBlack = true
-    scrollLock = true
+    checkScrollForNavbarLock = true
   } else if (navbarIsBlack && !shouldTurnBlack) {
     turnNavBarWhite()
     navbarIsBlack = false
-    scrollLock = true
+    checkScrollForNavbarLock = true
   }
   releaseLock()
 }
@@ -52,8 +59,6 @@ const animateSectionTitle = (section) => {
   }, 1000)
 }
 
-const isToggleNavVisible = () => ($('.toggle-navigation').css('display') !== 'none')
-
 const hideNavbar = () => {
   $('.navbar ul').css('visibility', 'hidden')
   $('.toggle-navigation').removeClass('open')
@@ -70,8 +75,6 @@ const hideNavbarIfToggleIsVisible = () => {
   }
 }
 
-const isNavBarOpen = () => ($('.navbar ul').css('visibility') === 'visible')
-
 const toggleNavbar = () => {
   if (isNavBarOpen()) {
     hideNavbar()
@@ -84,7 +87,7 @@ const handleSectionClick = event => {
   event.preventDefault()
   let sectionToGo = event.target.href.split('#').pop()
   if (sectionToGo) {
-    scrollPage($(`#${sectionToGo}`).offset().top - getNavbarHeight())
+    scrollPage($(`#${sectionToGo}`).offset().top - navbarHeight)
     animateSectionTitle(sectionToGo)
   } else {
     scrollPage(0)
@@ -101,9 +104,8 @@ const handleWindowResize = event => {
   }
 }
 
-const handleToggleNavigationClick = event => toggleNavbar()
-
 $(document).scroll(handleScrollEvent)
 $(window).resize(handleWindowResize)
 $('.navbar a').click(handleSectionClick)
 $('.toggle-navigation').click(handleToggleNavigationClick)
+$('.title-in-navbar').click(handleToggleNavigationClick)
