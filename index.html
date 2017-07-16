@@ -121,12 +121,35 @@
         </div>
       </div>
     </section>
+    <section id="peliculas">
+      <h2 class="section-title">Películas</h2>
+      <div class="section-content">
+        <ul class="peliculas">
+        </ul>
+        <div class="form-container">
+          <h3 class="form-title">Recomiéndame una película</h3>
+          <form id="pelicula-form">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+            <select name="genero" id="genero" required>
+              <option value="" selected disabled>Género</option>
+              <option value="Accion">Accion</option>
+              <option value="Animacion">Animacion</option>
+              <option value="Ciencia Ficcion">Ciencia Ficcion</option>
+              <option value="Terror">Terror</option>
+              <option value="Otros">Otros</option>
+            </select>
+            <button>Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
   <footer>
     © 2017 Pablo Varela
   </footer>
   <!-- Navbar -->
   <script src="./scripts/navbar.js"></script>
-  <script src="./scripts/form.js"></script>
+  <script src="./scripts/contact.js"></script>
+  <script src="./scripts/movies.js"></script>
 </body>
 </html>

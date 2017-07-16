@@ -17,6 +17,15 @@ a:hover {
   border-bottom: 1px solid royalblue;
 }
 
+button {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: .4em 2em .4em 2em;
+  border-radius: 5px;
+}
+
 p {
   text-align: justify;
 }
@@ -204,13 +213,15 @@ section:nth-child(odd) {
   padding: .4em 1em .4em 1em;
 }
 
-.form-container button {
-  background-color: royalblue;
-  color: white;
-  border: none;
-  font-size: 16px;
-  padding: .4em 2em .4em 2em;
-  border-radius: 5px;
+.movie-genre {
+  font-size: .4em;
+  font-style: italic;
+}
+
+.delete-movie {
+  color: orangered;
+  cursor: pointer;
+  font-size: 2em;
 }
 
 footer {
@@ -246,6 +257,9 @@ footer {
   }
   section * {
     display: block;
+  }
+  section ul li * {
+    display: initial;
   }
   .section-content > * {
     margin: 1em 0 1em 0;
