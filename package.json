@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "serve",
+    "start": "python server.py",
     "build": "babel src --out-dir scripts",
     "dev": "babel src -w --out-dir scripts"
   },
