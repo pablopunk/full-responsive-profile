@@ -4,7 +4,7 @@ html, body, h1, h2, h3, div {
 }
 
 * {
-  font-family: 'Droid Sans', Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
   box-sizing: border-box;
 }
 
@@ -114,7 +114,7 @@ ul li:nth-last-child(1) {
   color: royalblue;
   text-align: center;
   width: 100%;
-  font-family: Pacifico;
+  font-family: Menlo, monospace;
   text-shadow: 3px 3px 4px #1A1A1A;
   font-size: 60px;
   animation: fadeInAnimation .1s cubic-bezier(0.15, 0.02, 0.93,-0.12) forwards;
