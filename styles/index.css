@@ -68,9 +68,8 @@ ul li:nth-last-child(1) {
   left: 0;
   height: 51px;
   transition: background-color .3s cubic-bezier(1, 0.01, 0.25, 1);
-  animation: fadeInAnimation 1s cubic-bezier(1, 0.01, 0.25, 1) forwards;
+  animation: fadeInAnimation .3s cubic-bezier(1, 0.01, 0.25, 1) forwards;
   opacity: 0;
-  animation-delay: .7s;
 }
 
 .navbar > ul {

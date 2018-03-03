@@ -137,6 +137,7 @@ var handleWindowResize = function handleWindowResize (event) {
 
 $(document).scroll(handleScrollEvent)
 $(window).resize(handleWindowResize)
-$('.navbar a').click(handleSectionClick)
+// Removed dynamic navigation to improve SEO
+// $('.navbar a').click(handleSectionClick)
 $('.toggle-navigation').click(handleToggleNavigationClick)
 $('.title-in-navbar').click(handleToggleNavigationClick)
