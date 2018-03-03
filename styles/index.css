@@ -105,6 +105,7 @@ ul li:nth-last-child(1) {
   background-image: url(../images/header-blur.jpg);
   height: 100vh;
   animation: headerImageAnimation .3s cubic-bezier(0.15, 0.02, 0.93,-0.12) forwards;
+  animation-delay: .3s;
 }
 
 .header-title {
