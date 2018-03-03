@@ -117,7 +117,7 @@ ul li:nth-last-child(1) {
   width: 100%;
   font-family: Pacifico;
   text-shadow: 3px 3px 4px #1A1A1A;
-  font-size: 80px;
+  font-size: 60px;
   animation: fadeInAnimation .8s cubic-bezier(0.15, 0.02, 0.93,-0.12) forwards;
 }
 
@@ -145,6 +145,11 @@ section:nth-child(even) {
 
 section:nth-child(odd) {
   background-color: whitesmoke;
+}
+
+section small {
+  color: gray;
+  font-size: .6em;
 }
 
 .section-content {
