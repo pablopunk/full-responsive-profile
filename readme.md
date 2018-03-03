@@ -1,15 +1,13 @@
 # Full responsive profile
-
 <p align="center">
-  HTML/CSS/JS responsive personal profile.
+  HTML/CSS/JS responsive personal profile with SEO
 </p>
 
 ## Execute
 
 ```js
-npm install 
+npm install
 npm build
-npm start
 ```
 
 ## Develop
