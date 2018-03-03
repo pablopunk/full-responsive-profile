@@ -67,8 +67,8 @@ ul li:nth-last-child(1) {
   right: 0;
   left: 0;
   height: 51px;
-  transition: background-color .3s cubic-bezier(1, 0.01, 0.25, 1);
-  animation: fadeInAnimation .3s cubic-bezier(1, 0.01, 0.25, 1) forwards;
+  transition: background-color .1s cubic-bezier(1, 0.01, 0.25, 1);
+  animation: fadeInAnimation .1s cubic-bezier(1, 0.01, 0.25, 1) forwards;
   opacity: 0;
 }
 
@@ -91,7 +91,7 @@ ul li:nth-last-child(1) {
   padding: 1em;
   line-height: 50px;
   color: white;
-  transition: background-color .3s, color .3s;
+  transition: background-color .1s, color .1s;
 }
 
 .navbar > ul > li:hover {
@@ -102,9 +102,9 @@ ul li:nth-last-child(1) {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(../images/header-blur.jpeg);
+  background-image: url(../images/header-blur.jpg);
   height: 100vh;
-  animation: headerImageAnimation .8s cubic-bezier(0.15, 0.02, 0.93,-0.12) forwards;
+  animation: headerImageAnimation .3s cubic-bezier(0.15, 0.02, 0.93,-0.12) forwards;
 }
 
 .header-title {
@@ -117,7 +117,7 @@ ul li:nth-last-child(1) {
   font-family: Pacifico;
   text-shadow: 3px 3px 4px #1A1A1A;
   font-size: 60px;
-  animation: fadeInAnimation .8s cubic-bezier(0.15, 0.02, 0.93,-0.12) forwards;
+  animation: fadeInAnimation .1s cubic-bezier(0.15, 0.02, 0.93,-0.12) forwards;
 }
 
 .header-title.title-in-navbar {
@@ -127,7 +127,7 @@ ul li:nth-last-child(1) {
   width: inherit;
   color: white;
   font-size: 22px;
-  animation: headerInTitleAnimation .4s ease forwards;
+  animation: headerInTitleAnimation .1s ease forwards;
 }
 
 section {
@@ -303,9 +303,9 @@ footer {
 
 @keyframes headerImageAnimation {
   0% {
-    background-image: url(../images/header.jpeg);
+    background-image: url(../images/header.jpg);
   }
   100% {
-    background-image: url(../images/header-blur.jpeg);
+    background-image: url(../images/header-blur.jpg);
   }
 }

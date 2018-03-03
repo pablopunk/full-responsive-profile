@@ -106,6 +106,6 @@ const handleWindowResize = event => {
 
 $(document).scroll(handleScrollEvent)
 $(window).resize(handleWindowResize)
-$('.navbar a').click(handleSectionClick)
-$('.toggle-navigation').click(handleToggleNavigationClick)
+// $('.navbar a').click(handleSectionClick)
+// $('.toggle-navigation').click(handleToggleNavigationClick)
 $('.title-in-navbar').click(handleToggleNavigationClick)

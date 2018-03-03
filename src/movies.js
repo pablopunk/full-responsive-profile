@@ -57,5 +57,5 @@ const handleFormSubmit = event => {
   return false
 }
 
-$('#pelicula-form').submit(handleFormSubmit)
-listMoviesInView()
+// $('#pelicula-form').submit(handleFormSubmit)
+// listMoviesInView()

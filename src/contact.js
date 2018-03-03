@@ -54,5 +54,5 @@ const handleFormSubmit = event => {
   return validateForm(event.target)
 }
 
-$('#select-conocido').change(handleChangeOnSelect)
-$('#contact-form').submit(handleFormSubmit)
+// $('#select-conocido').change(handleChangeOnSelect)
+// $('#contact-form').submit(handleFormSubmit)
